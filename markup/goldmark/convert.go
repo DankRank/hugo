@@ -31,6 +31,8 @@ import (
 	"github.com/yuin/goldmark/renderer"
 	"github.com/yuin/goldmark/renderer/html"
 	"github.com/yuin/goldmark/text"
+
+	"github.com/graemephi/goldmark-qjs-katex"
 )
 
 // Provider is the package entry point.
@@ -134,6 +136,10 @@ func newMarkdown(pcfg converter.ProviderConfig) goldmark.Markdown {
 
 	if cfg.Parser.Attribute.Block {
 		extensions = append(extensions, attributes.New())
+	}
+
+	if cfg.Katex.Enable {
+		extensions = append(extensions, &qjskatex.Extension{EnableWarnings: cfg.Katex.Warnings})
 	}
 
 	md := goldmark.New(

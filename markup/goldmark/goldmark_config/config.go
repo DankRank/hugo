@@ -43,6 +43,10 @@ var Default = Config{
 			Block: false,
 		},
 	},
+	Katex: Katex{
+		Enable:   true,
+		Warnings: false,
+	},
 }
 
 // Config configures Goldmark.
@@ -50,6 +54,7 @@ type Config struct {
 	Renderer   Renderer
 	Parser     Parser
 	Extensions Extensions
+	Katex      Katex
 }
 
 type Extensions struct {
@@ -95,4 +100,11 @@ type ParserAttribute struct {
 	Title bool
 	// Enables custom attributeds for blocks.
 	Block bool
+}
+
+type Katex struct {
+	// Enable the Katex extension.
+	Enable bool
+	// Enables warnings.
+	Warnings bool
 }
